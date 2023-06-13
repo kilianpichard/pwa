@@ -1,9 +1,12 @@
-const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
 fetch(API_URL)
   .then((response) => response.json())
   .then((data) => {
     let stringifiedData = JSON.stringify(data);
-    document.querySelector('#posts').innerHTML = stringifiedData;
-    localStorage.setItem('posts', stringifiedData);
+    const dom = generateCards(data)
+    
+    document.getElementById("posts").appendChild(dom);
+
+    localStorage.setItem("posts", stringifiedData);
   });
